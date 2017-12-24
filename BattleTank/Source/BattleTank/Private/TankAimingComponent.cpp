@@ -4,23 +4,14 @@
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
+#include "TankBarrel.h"
 
 
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet) 
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet) 
 {
 	this->Barrel = BarrelToSet;
 }
-
-
-// Called every frame
-void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
-
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
@@ -49,6 +40,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) 
 {
 	// Work-out difference between current barrel rotation, and aimdirection
-	// move the barrel the right amount this frame
-	// given a max elevation speed, and the frame time
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation(); //x direction vector
+	auto AimAsRotator = AimDirection.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	Barrel->Elevate(5); //TODO Remove magic number
+
 }
