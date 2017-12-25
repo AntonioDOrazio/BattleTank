@@ -38,6 +38,6 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing) // in centimetri/s
-	float LaunchSpeed = 100000; // TODO Find a sensible value
+	float LaunchSpeed = 4000; // TODO Find a sensible value
 	
 };
