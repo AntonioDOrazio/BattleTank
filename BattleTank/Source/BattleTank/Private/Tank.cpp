@@ -59,6 +59,7 @@ void ATank::Fire()
 			Barrel->GetSocketLocation(FName("Projectile")),
 			Barrel->GetSocketRotation(FName("Projectile"))
 			);
+		if (!Projectile) { UE_LOG(LogTemp, Warning, TEXT("NON STO SPAWNANDO PROJKECTILE")); }
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
