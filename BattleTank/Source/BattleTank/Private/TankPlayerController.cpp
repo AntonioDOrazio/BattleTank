@@ -7,15 +7,6 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	ATank* PossessedTank = GetControlledTank();
-	if (PossessedTank != nullptr) {
-		FString LogMessage = PossessedTank->GetName();
-		UE_LOG(LogTemp, Warning, TEXT("Player controller is possessing %s"), *LogMessage);
-	}
-	else {
-		UE_LOG(LogTemp, Error, TEXT("Tank not possessed"));
-	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime) {
